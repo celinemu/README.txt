@@ -1,0 +1,49 @@
+<?php
+try {
+    $pdo = new PDO(
+            'mysql:host=localhost;dbname=bge_pdo', 'root', '', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+    );
+} catch (PDOException $ex) {
+    die('Une erreur est survenu : ' . $ex->getMessage());
+}
+echo "Connexion effectué avec succès à la base de donnée";
+echo "<hr>";
+
+$query = $pdo->query(
+        'SELECT * 
+            FROM stagiaires, genres, sites
+            WHERE sta_sit_id=sit_id AND sta_gen_id= gen_id'
+);
+// Tant que j'ai un resultat à fetch, je le met dans $line
+// J'affiche mes valeurs du tableau $line
+//  echo $line['sta_id'] . ' => ' . $line['sta_nom'] . ' ' . $line['sta_prenom'] . '<br>';
+?>
+<link href="mystyle.css" rel="stylesheet" type="text/css"/>
+<table>
+    <thead>
+        <tr>
+            <th>stagiaires<a href="stagiaires.php?titre=0"></th>
+            <th>genres<a href="stagiaires.php?titre=1"></th>
+            <th>sites<a href="stagiaires.php?titre=2"></th>
+        </tr>
+    </thead>  
+    <tbody>
+        <?php
+        while ($line = $query->fetch()) {
+            if ($line['gen_nom'] == 'Femme') {
+                $genre = 'ico_femme.png';
+            } else if ($line['gen_nom'] == 'Homme') {
+                $genre = 'ico_homme.png';
+            }
+            else($genre = 'ico_inconnu.png')
+            ?>
+            <tr>
+                <td><?php echo $line['sta_nom'] ?></td>
+                <td><img src="<?php echo $genre; ?>" /></td>
+                <td><?php echo $line['sit_nom'] ?></td>                 
+            </tr>
+            <?php
+        }
+        ?>
+    </tbody>
+</table>
