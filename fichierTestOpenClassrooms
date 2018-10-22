@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>premiers exos js</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <script src="js_chap3.1.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+        <script>
+            
+            var demande = parseInt(prompt("puis-je vous demander quelque chose svp ?\n\n tapez 1 pour oui et 2 pour non"));
+            if (demande !== 1 && demande !== 2){
+                alert('ceci n\'est pas une demande correcte.');
+                parseInt(prompt("puis-je vous demander quelque chose svp ?\n\n tapez 1 pour oui et 2 pour non"));
+            }
+            else {
+                if (demande === 2) {
+                        alert('au revoir.');
+                } 
+                    else {
+                            var userAge = parseInt(prompt("entrez votre âge svp :"));
+
+                            if (userAge > 1 && userAge <= 17) {
+                                alert('roulez jeunesse');
+                            } else if (userAge > 17 && userAge <= 49) {
+                                alert('fini l\'insouciance');
+                            } else if (userAge > 49 && userAge <= 59) {
+                                alert('un peu de sagesse');
+                            } else if (userAge > 59 && userAge <= 120) {
+                                alert('penses à faire tout ce que tu t\'es interdit');
+                            } else {
+                                alert('ceci n\'est pas votre âge, n\'est ce pas ?!?');
+                            }
+                    }
+            }
+            /*var réponse = parseInt(prompt("puis-je vous demander autre chose svp ?\n\n tapez 1 pour oui et 2 pour non"));*/
+            
+
+// l'utilisateur charge sa page web
+
+//Il est ensuite invité à taper son âge dans une fenêtre d'interaction
+
+//Une fois l'âge fourni, l'utilisateur obtient un petit commentaire
+ 
+    </script>
+  
+  </body>
+
+</html>
